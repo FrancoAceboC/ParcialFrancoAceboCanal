@@ -41,7 +41,7 @@ public class Player extends Person{
     private Currency currency;
 
     @ManyToOne
-    @JoinColumn(name = "MANAGER_ID", referencedColumnName = "ID_PLAYER")
+    @JoinColumn(name = "MANAGER_ID", referencedColumnName = "ID_PERSON")
     private Manager manager;
 
 }

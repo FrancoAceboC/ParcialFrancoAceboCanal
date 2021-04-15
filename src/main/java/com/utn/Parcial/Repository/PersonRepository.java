@@ -2,9 +2,9 @@ package com.utn.Parcial.Repository;
 
 import com.utn.Parcial.Model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public interface PersonRepository extends JpaRepository<Person, Integer> {
     
 }
