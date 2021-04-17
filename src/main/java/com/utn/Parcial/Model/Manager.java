@@ -31,4 +31,11 @@ public class Manager extends Person{
 
     @OneToMany(mappedBy = "manager")
     private List<Player> players = new ArrayList<>();
+
+//    public float getTotalAmount() {
+//        return players.stream()
+//                .map(Player::getCurrency)
+//                .reduce(0, float::sum);
+//    }
+
 }
