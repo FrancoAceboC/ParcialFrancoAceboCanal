@@ -28,4 +28,10 @@ public class RestResponseEntityExceptionHandler {
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage());
         return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getHttpStatus());
     }
+
+    @ExceptionHandler(AlreadyExistException.class)
+    public ResponseEntity<Object>errorAlreadyExistExceptionHandler(final AlreadyExistException ex, HttpServletRequest request){
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage());
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getHttpStatus());
+    }
 }

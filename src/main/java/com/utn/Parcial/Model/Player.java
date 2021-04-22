@@ -18,6 +18,7 @@ public class Player extends Person{
 
 
     @NotNull(message = "The field weight is required")
+    @Column(name = "WEIGHT")
     private float weight;
 
     @NotNull(message = "The field height is required")

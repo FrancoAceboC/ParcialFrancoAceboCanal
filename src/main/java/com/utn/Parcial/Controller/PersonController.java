@@ -29,11 +29,13 @@ public class PersonController {
         personService.addPerson(person);
     }
 
-//    @PutMapping
-//    public void addPlayerToPerson()
-
     @DeleteMapping("/{id}")
     public void deletePerson(@PathVariable Integer idPerson){
         this.personService.deletePerson(idPerson);
+    }
+
+    @PutMapping("{id}/player/{idPlayer}")
+    public void refreshPlayerByManager(@PathVariable("id")Integer idManager, @PathVariable("idPlayer")Integer idPlayer){
+        this.personService.playerByManager(idManager, idPlayer);
     }
 }

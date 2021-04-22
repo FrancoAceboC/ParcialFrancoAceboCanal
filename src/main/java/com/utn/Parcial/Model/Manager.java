@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +20,6 @@ import java.util.List;
 @NoArgsConstructor
 @Entity()
 public class Manager extends Person{
-
 
     @NotNull(message = "The field vault weight is required")
     @Column(name = "VAULT_WEIGHT")
@@ -32,10 +32,18 @@ public class Manager extends Person{
     @OneToMany(mappedBy = "manager")
     private List<Player> players = new ArrayList<>();
 
-//    public float getTotalAmount() {
-//        return players.stream()
-//                .map(Player::getCurrency)
-//                .reduce(0, float::sum);
-//    }
+    public void refreshWeight(float weight){
+        this.vaultWeight = this.vaultWeight + weight;
+    }
 
+    public void refreshTotalAmount(float amount, String typeCurrency){
+
+        this.totalAmount = typeCurrency.equals(TypeCurrency.EU) ? this.totalAmount + amount * 200 :
+                typeCurrency.equals(TypeCurrency.USD) ? this.totalAmount + amount * 160 :
+                        this.totalAmount + amount;
+    }
+
+    public Optional<Player>findPlayer(Integer id){
+        return this.players.stream().filter(p -> p.getId() == id).findAny();
+    }
 }
